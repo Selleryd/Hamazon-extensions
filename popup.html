@@ -4,16 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hamazon Verifier</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/a2e0f1f374.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #121212, #1e1e1e);
+      color: white;
+      width: 300px;
+      padding: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #15a76c;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hamazon Verifier</h1>
-    <input type="text" id="productInput" placeholder="Paste product name here" />
-    <button id="verifyBtn"><i class="fas fa-search"></i> Verify</button>
-    <div id="resultBox"></div>
-  </div>
+  <h2><i class="fa-solid fa-shield-halved"></i> Hamazon Verifier</h2>
+  <input type="text" id="productInput" placeholder="Paste product name..." />
+  <button id="verifyBtn"><i class="fas fa-search"></i> Verify</button>
+  <div id="result"></div>
   <script src="popup.js"></script>
 </body>
 </html>
