@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <meta charset="UTF-8" />
-  <title>Hamazon Verifier</title>
+  <title>Hamazon Product Checker</title>
   <link rel="stylesheet" href="style.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-..."
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <div class="glass-card">
-    <div class="header">
-      <i class="fas fa-shield-alt"></i>
-      <h1>Hamazon Verifier</h1>
-    </div>
-    <p class="subtitle">Check if your product is clean, kosher & certified</p>
-
-    <div class="form-group">
-      <input
-        type="text"
-        id="productInput"
-        placeholder="Enter product name..."
-        autocomplete="off"
-      />
-      <button id="verifyBtn">
-        <i class="fas fa-search"></i>
-        Verify
-      </button>
-    </div>
-
-    <div id="result" class="result-text"></div>
+  <div class="container">
+    <h2>Check if your product is clean & Hamazon certified</h2>
+    <input type="text" id="productInput" placeholder="Enter product name..." />
+    <button id="verifyBtn"><i class="fas fa-search"></i> Verify</button>
+    <div id="resultBox"></div>
   </div>
-
   <script src="popup.js"></script>
 </body>
 </html>
