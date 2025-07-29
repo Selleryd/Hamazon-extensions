@@ -1,30 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const verifyBtn = document.getElementById("verifyBtn");
-  const input = document.getElementById("productInput");
+document.getElementById("verifyBtn").addEventListener("click", async () => {
+  const product = document.getElementById("productName").value.trim();
   const resultBox = document.getElementById("resultBox");
 
-  const apiBase = "https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec"; // Replace this
+  if (!product) {
+    resultBox.innerHTML = `<i class="fas fa-exclamation-circle" style="color:yellow;"></i> Please enter a product name`;
+    return;
+  }
 
-  verifyBtn.addEventListener("click", async () => {
-    const product = input.value.trim();
-    if (!product) return;
+  const normalized = encodeURIComponent(product.replace(/®/g, "").trim());
+  const url = `https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec?product=${normalized}`;
 
-    resultBox.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Checking...`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-    try {
-      const response = await fetch(`${apiBase}?product=${encodeURIComponent(product)}`);
-      const text = await response.text();
-
-      const json = JSON.parse(text);
-
-      if (json.certified) {
-        resultBox.innerHTML = `<i class="fas fa-check-circle" style="color:lightgreen;"></i> Certified by Hamazon!`;
-      } else {
-        resultBox.innerHTML = `<i class="fas fa-times-circle" style="color:red;"></i> Not certified by Hamazon`;
-      }
-    } catch (err) {
-      console.error(err);
-      resultBox.innerHTML = `<i class="fas fa-bug" style="color:orange;"></i> Error reaching server`;
+    if (data && data.certified) {
+      resultBox.innerHTML = `<i class="fas fa-check-circle" style="color:lightgreen;"></i> Certified by Hamazon`;
+    } else {
+      resultBox.innerHTML = `<i class="fas fa-times-circle" style="color:red;"></i> Not certified by Hamazon`;
     }
-  });
+  } catch (err) {
+    console.error(err);
+    resultBox.innerHTML = `<i class="fas fa-bug" style="color:orange;"></i> Error reaching server`;
+  }
 });
