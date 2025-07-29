@@ -1,20 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Hamazon Product Checker",
+  "name": "Hamazon Product Verifier",
   "version": "1.0",
-  "description": "Check if a product is kosher certified by Hamazon",
-  "permissions": ["storage"],
+  "description": "Check if a product is Hamazon-certified for clean kosher health.",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
-    }
-  },
-  "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "default_popup": "popup.html"
   }
 }
