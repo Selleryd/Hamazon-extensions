@@ -2,9 +2,21 @@
   "manifest_version": 3,
   "name": "Hamazon Product Verifier",
   "version": "1.0",
-  "description": "Check if a product is Hamazon-certified using a Google Sheet.",
+  "description": "Instantly verify if a product is certified by Hamazon for clean kosher health.",
   "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>", "https://script.google.com/macros/s/*"],
   "action": {
-    "default_popup": "popup.html"
-  }
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/verified.png",
+      "48": "icons/verified.png",
+      "128": "icons/verified.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
 }
