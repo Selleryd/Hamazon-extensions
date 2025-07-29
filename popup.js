@@ -4,7 +4,7 @@ async function checkProduct() {
   resultDiv.innerText = "Checking...";
 
   try {
-    const res = await fetch(`https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?q=${encodeURIComponent(query)}`);
+    const res = await fetch(`https://script.google.com/macros/s/AKfycbxf9MaN87R686vUWLN_CaESO4Lpv7UfihEipz70uNDXesQiAW62vcnU_b5aIENfe_1a/exec?q=${encodeURIComponent(query)}`);
     const data = await res.json();
 
     if (data.status === "Not Certified") {
