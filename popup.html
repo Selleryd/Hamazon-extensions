@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Hamazon Check</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 12px; width: 300px; }
-    input, button { width: 100%; margin-top: 8px; padding: 8px; }
-    #result { margin-top: 12px; font-size: 14px; }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Hamazon Verifier</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-..."
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-  <h2>Check Product</h2>
-  <input id="query" type="text" placeholder="Enter product name or UPC" />
-  <button onclick="checkProduct()">Verify</button>
-  <div id="result"></div>
+  <div class="glass-card">
+    <div class="header">
+      <i class="fas fa-shield-alt"></i>
+      <h1>Hamazon Verifier</h1>
+    </div>
+    <p class="subtitle">Check if your product is clean, kosher & certified</p>
+
+    <div class="form-group">
+      <input
+        type="text"
+        id="productInput"
+        placeholder="Enter product name..."
+        autocomplete="off"
+      />
+      <button id="verifyBtn">
+        <i class="fas fa-search"></i>
+        Verify
+      </button>
+    </div>
+
+    <div id="result" class="result-text"></div>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>
