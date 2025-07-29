@@ -2,75 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hamazon Verifier</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
-      min-width: 300px;
-      padding: 20px;
-      border-radius: 10px;
-    }
 
-    h1 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
+  <!-- Google Material Icons & Inter font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
 
-    #productName {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      margin-bottom: 15px;
-      font-size: 14px;
-    }
+  <!-- Local stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 
-    #verifyButton {
-      width: 100%;
-      background: #00c853;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.3s ease;
-    }
-
-    #verifyButton:hover {
-      background: #00b34e;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 15px;
-      text-align: center;
-    }
-
-    .material-icons {
-      font-size: 18px;
-      vertical-align: middle;
-    }
-  </style>
+  <!-- Script loads *after* HTML thanks to defer -->
+  <script src="popup.js" defer></script>
 </head>
 <body>
-  <h1>Hamazon Verifier</h1>
-  <input type="text" id="productName" placeholder="Enter product name..." />
-  <button id="verifyButton">
-    <span class="material-icons">search</span> Verify Product
-  </button>
-  <div id="result"></div>
-  <script src="popup.js"></script>
+  <div class="container">
+    <h1 class="title"><span class="material-icons">verified</span> Hamazon Verifier</h1>
+
+    <input id="productInput" type="text" placeholder="Enter product name…" />
+
+    <button id="verifyBtn">
+      <span class="material-icons">search</span> Verify
+    </button>
+
+    <div id="result"></div>
+  </div>
 </body>
 </html>
