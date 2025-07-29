@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Hamazon Product Verifier",
+  "version": "1.0",
+  "description": "Check if a product is Hamazon-certified for clean kosher health.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
