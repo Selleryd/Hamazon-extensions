@@ -1,7 +1,7 @@
 document.getElementById('verifyBtn').addEventListener('click', async () => {
   const input = document.getElementById('productInput').value;
   const query = normalize(input);
-  const url = `https://script.google.com/macros/s/AKfycbxf9MaN87R686vUWLN_CaESO4Lpv7UfihEipz70uNDXesQiAW62vcnU_b5aIENfe_1a/exec?query=${encodeURIComponent(query)}`;
+  const url = `https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec?query=${encodeURIComponent(query)}`;
 
   const resultBox = document.getElementById('result');
   resultBox.innerHTML = "Verifying...";
