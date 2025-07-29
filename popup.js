@@ -1,24 +1,34 @@
-async function checkProduct() {
-  const query = document.getElementById('query').value.trim();
-  const resultDiv = document.getElementById('result');
-  resultDiv.innerText = "Checking...";
+document.getElementById('verifyButton').addEventListener('click', async () => {
+  const input = document.getElementById('productInput').value;
+  const sanitizedInput = normalizeString(input);
+
+  // Replace this URL with your actual deployed Google Apps Script endpoint
+  const apiUrl = "https://script.google.com/macros/s/AKfycbxf9MaN87R686vUWLN_CaESO4Lpv7UfihEipz70uNDXesQiAW62vcnU_b5aIENfe_1a/exec";
 
   try {
-    const res = await fetch(`https://script.google.com/macros/s/AKfycbxf9MaN87R686vUWLN_CaESO4Lpv7UfihEipz70uNDXesQiAW62vcnU_b5aIENfe_1a/exec?q=${encodeURIComponent(query)}`);
+    const res = await fetch(apiUrl);
     const data = await res.json();
 
-    if (data.status === "Not Certified") {
-      resultDiv.innerHTML = `<span style="color:red;">❌ Not Certified</span>`;
-    } else {
-      resultDiv.innerHTML = `
-        ✅ <strong>${data.product}</strong><br>
-        Brand: ${data.brand}<br>
-        Status: ${data.status}<br>
-        Lab Test: ${data.lab_date}<br>
-        ${data.lab_link ? `<a href="${data.lab_link}" target="_blank">Lab Report</a>` : ""}
-      `;
-    }
+    // Assume data.products is an array of certified product names
+    const isCertified = data.products.some(product => 
+      normalizeString(product).includes(sanitizedInput) ||
+      sanitizedInput.includes(normalizeString(product))
+    );
+
+    const result = document.getElementById('result');
+    result.innerHTML = isCertified 
+      ? `<i class="fa-solid fa-check-circle" style="color:green;"></i> Certified by Hamazon!`
+      : `<i class="fa-solid fa-times-circle" style="color:red;"></i> Not certified.`;
   } catch (err) {
-    resultDiv.innerText = "Error checking product.";
+    console.error(err);
+    document.getElementById('result').innerHTML = `<i class="fa-solid fa-exclamation-circle" style="color:orange;"></i> Error verifying product.`;
   }
+});
+
+function normalizeString(str) {
+  return str
+    .toLowerCase()
+    .replace(/[®™.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+    .replace(/\s{2,}/g," ")
+    .trim();
 }
