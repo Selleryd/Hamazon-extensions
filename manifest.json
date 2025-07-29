@@ -1,13 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Hamazon Verifier",
+  "name": "Hamazon Product Verifier",
   "version": "1.0",
-  "description": "Checks if a product is certified by Hamazon",
+  "description": "Check if a product is Hamazon-certified using a Google Sheet.",
+  "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html"
-  },
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": [
-    "https://script.google.com/macros/s/*"
-  ]
+  }
 }
