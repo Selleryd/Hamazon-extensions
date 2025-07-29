@@ -1,53 +1,49 @@
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0a0f1a, #1e2c3a);
   color: #fff;
+  margin: 0;
+  padding: 20px;
   width: 300px;
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .container {
   text-align: center;
-  padding: 20px;
-  width: 100%;
 }
 
 h2 {
   font-size: 16px;
   margin-bottom: 20px;
-  color: #f0f0f0;
 }
 
 input {
+  width: 100%;
   padding: 10px;
-  width: 90%;
   border: none;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 14px;
+  background-color: #1b2a3a;
+  color: #fff;
 }
 
 button {
-  background-color: #15A76C;
+  background-color: #15a76c;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #119c63;
+  background-color: #0f8c5a;
 }
 
 #resultBox {
   margin-top: 15px;
-  font-size: 14px;
+  font-size: 15px;
 }
