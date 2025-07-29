@@ -1,31 +1,42 @@
-document.getElementById("verifyBtn").addEventListener("click", async () => {
-  const input = document.getElementById("productInput").value.trim();
-  const resultDiv = document.getElementById("result");
+// ⚠️  Replace with your real Apps-Script Web-App URL (ends in /exec)
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec";
 
-  if (!input) {
-    resultDiv.textContent = "Please enter a product name.";
-    resultDiv.className = "error";
-    resultDiv.style.display = "block";
-    return;
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const btn     = document.getElementById("verifyBtn");
+  const inputEl = document.getElementById("productInput");
+  const result  = document.getElementById("result");
 
-  resultDiv.textContent = "Verifying...";
-  resultDiv.style.display = "block";
-  resultDiv.className = "";
-
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec?product=" + encodeURIComponent(input));
-    const data = await response.json();
-
-    if (data.status === "success" && data.match) {
-      resultDiv.textContent = "✅ Certified by Hamazon!";
-      resultDiv.className = "success";
-    } else {
-      resultDiv.textContent = "❌ Not certified by Hamazon.";
-      resultDiv.className = "error";
+  btn.addEventListener("click", async () => {
+    const product = inputEl.value.trim();
+    if (!product) {
+      show("Please enter a product name.", "info");
+      return;
     }
-  } catch (error) {
-    resultDiv.textContent = "Error reaching server.";
-    resultDiv.className = "error";
+
+    show(`<span class="material-icons">hourglass_top</span> Checking…`, "info");
+    btn.disabled = true;
+
+    try {
+      const url  = `${WEB_APP_URL}?product=${encodeURIComponent(product)}`;
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+      const data = await resp.json();
+      if (data.certified) {
+        show(`<span class="material-icons">verified</span> Hamazon Certified`, "success");
+      } else {
+        show(`<span class="material-icons">cancel</span> Not certified`, "error");
+      }
+    } catch (err) {
+      console.error(err);
+      show(`<span class="material-icons">error</span> Server error`, "error");
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  function show(msg, cls) {
+    result.className = cls;
+    result.innerHTML = msg;
   }
 });
