@@ -1,80 +1,53 @@
 body {
   margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
   font-family: 'Segoe UI', sans-serif;
-  width: 320px;
-  height: 300px;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  width: 300px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 24px;
-  width: 90%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  color: #f8fafc;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.container {
   text-align: center;
+  padding: 20px;
+  width: 100%;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #15a76c;
-}
-
-.subtitle {
-  font-size: 13px;
-  color: #cbd5e1;
-  margin: -10px 0 8px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+h2 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #f0f0f0;
 }
 
 input {
-  padding: 10px 12px;
-  font-size: 14px;
-  border-radius: 8px;
+  padding: 10px;
+  width: 90%;
   border: none;
-  outline: none;
-  background: #1e293b;
-  color: #ffffff;
-  box-shadow: 0 0 10px rgba(21, 167, 108, 0.2);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
 button {
-  padding: 10px;
-  background: #15a76c;
+  background-color: #15A76C;
   color: white;
-  font-size: 14px;
-  font-weight: bold;
   border: none;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background: #12855a;
+  background-color: #119c63;
 }
 
-.result-text {
-  font-size: 15px;
-  font-weight: bold;
-  min-height: 20px;
+#resultBox {
+  margin-top: 15px;
+  font-size: 14px;
 }
