@@ -1,13 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Hamazon Product Verifier",
+  "name": "Hamazon Verifier",
   "version": "1.0",
-  "description": "Checks if a product is certified by Hamazon using Google Sheets.",
+  "description": "Checks if a product is certified by Hamazon",
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/svgs/solid/shield-halved.svg"
-    }
+    "default_popup": "popup.html"
   },
   "permissions": ["activeTab", "scripting"],
   "host_permissions": ["<all_urls>"]
