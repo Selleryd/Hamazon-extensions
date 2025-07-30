@@ -1,81 +1,109 @@
+/* page background */
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background: #0a1a2a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
+/* glass‑morphic card */
+.card {
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
-  padding: 20px;
-  width: 320px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  text-align: center;
-}
-
-h1 {
+  padding: 24px;
+  width: 360px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   color: #fff;
-  margin-bottom: 20px;
-  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-h1 .fa-shield-halved {
-  margin-right: 8px;
-  color: #15A76C;
-}
-
-#productName {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-#verifyBtn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: #15A76C;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(21, 167, 108, 0.6);
-  transition: transform 0.2s, box-shadow 0.2s;
+/* header with animated icon */
+.header {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  gap: 8px;
 }
 
-#verifyBtn i {
-  margin-right: 8px;
+.header .fa-shield-halved {
+  color: #1abc9c;
+  animation: pulse 2s infinite;
 }
 
-#verifyBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(21, 167, 108, 0.8);
-}
-
-.result {
-  margin-top: 20px;
-  font-size: 1rem;
+/* input styling */
+input {
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
 }
 
-.result .fa-check {
-  color: #0f0;
-  margin-right: 6px;
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.result .fa-xmark {
-  color: #f66;
-  margin-right: 6px;
+input:focus {
+  border-color: #1abc9c;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* button styling */
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #1abc9c, #16a085);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button i {
+  /* leave spinner or shield icon sizing */
+}
+
+/* result text */
+.result {
+  text-align: center;
+  min-height: 1.2em;
+  font-size: 0.95rem;
+}
+
+/* pulse animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
