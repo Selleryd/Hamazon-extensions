@@ -1,4 +1,4 @@
-\document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const btn      = document.getElementById('verifyBtn');
   const resultEl = document.getElementById('result');
   const nameEl   = document.getElementById('productName');
