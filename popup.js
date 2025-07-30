@@ -1,3 +1,4 @@
+// popup.js
 document.addEventListener('DOMContentLoaded', () => {
   const btn    = document.getElementById('verifyBtn');
   const result = document.getElementById('result');
@@ -15,7 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch(`${API_URL}?productName=${encodeURIComponent(name)}`)
       .then(res => {
-        if (!res.ok) throw new Error(`Network status ${res.status}`);
+        if (!res.ok) {
+          throw new Error(`Network error: status ${res.status}`);
+        }
+        const ct = res.headers.get('content-type') || '';
+        if (!ct.includes('application/json')) {
+          throw new Error(
+            'Server did not return JSON.\n' +
+            'Make sure your Apps Script is deployed as a Web App (Anyone, even anonymous)\n' +
+            'and you’re using the /exec URL.'
+          );
+        }
         return res.json();
       })
       .then(data => {
@@ -32,9 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .catch(err => {
-        console.error('Fetch error:', err);
-        result.textContent =
-          'Error reaching server. Please check console.';
+        console.error(err);
+        result.textContent = err.message;
       });
   });
 });
