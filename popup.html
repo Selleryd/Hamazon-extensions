@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Product Verifier</title>
-  <!-- Font Awesome CDN (no integrity/crossorigin) -->
+  <!-- Font Awesome CDN -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1><i class="fa-solid fa-shield-halved"></i> Product Verifier</h1>
-    <input id="productName" type="text" placeholder="Enter product name" />
+  <div class="card">
+    <div class="header">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Product Verifier</span>
+    </div>
+    <input
+      id="productName"
+      type="text"
+      placeholder="Enter product name"
+      autocomplete="off"
+    />
     <button id="verifyBtn">
       <i class="fa-solid fa-shield-check"></i>
-      Verify
+      <span>Verify</span>
     </button>
     <div id="result" class="result"></div>
   </div>
