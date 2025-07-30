@@ -15,30 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch(`${API_URL}?productName=${encodeURIComponent(name)}`)
       .then(res => {
-        console.log('HTTP status:', res.status, res.headers.get('content-type'));
-        return res.text();
+        if (!res.ok) throw new Error(`Status ${res.status}`);
+        return res.json();
       })
-      .then(text => {
-        console.log('RAW RESPONSE:', text);
-        let data;
-        try {
-          data = JSON.parse(text);
-        } catch(err) {
-          console.error('JSON.parse failed', err);
-          result.textContent = 'Server returned invalid response';
-          return;
-        }
-        if (data.found) {
-          result.innerHTML = `<i class="fa-solid fa-check"></i>
-                              Yes, “${name}” is verified.`;
+      .then(data => {
+        if (data.found === true) {
+          result.innerHTML = `<i class="fa-solid fa-check"></i> Yes, “${name}” is verified.`;
+        } else if (data.found === false) {
+          result.innerHTML = `<i class="fa-solid fa-xmark"></i> No, “${name}” is not verified.`;
+        } else if (data.error) {
+          result.textContent = `Error: ${data.error}`;
         } else {
-          result.innerHTML = `<i class="fa-solid fa-xmark"></i>
-                              No, “${name}” is not verified.`;
+          result.textContent = 'Unexpected response format.';
         }
       })
       .catch(err => {
         console.error('Fetch error:', err);
-        result.textContent = 'Error reaching server. Please try again.';
+        result.textContent = 'Error reaching server. Please check console.';
       });
   });
 });
