@@ -1,3 +1,4 @@
+// popup.js
 document.addEventListener('DOMContentLoaded', () => {
   const btn      = document.getElementById('verifyBtn');
   const resultEl = document.getElementById('result');
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const VERIFY_HTML   = '<i class="fa-solid fa-shield-check"></i><span>Verify</span>';
   const LOADING_HTML  = '<i class="fa-solid fa-spinner fa-spin"></i><span>Verifying...</span>';
-  const API_URL       = 'https://script.google.com/macros/s/AKfycbzv61PbeXP1yjhQJWDsasAuCphvbDuxZM3vJQG1V1MzHUlBxR0J7iwwxKebLfB9SMBT/exec';
+  const API_URL       = 'https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec';
 
   btn.addEventListener('click', () => {
     const name = nameEl.value.trim();
@@ -18,13 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // build query string with whichever params are present
     const params = [];
     if (name) params.push(`productName=${encodeURIComponent(name)}`);
     if (upc)  params.push(`upc=${encodeURIComponent(upc)}`);
     const url = `${API_URL}?${params.join('&')}`;
 
-    // loading state
     btn.disabled = true;
     btn.innerHTML = LOADING_HTML;
 
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ct.includes('application/json')) {
           throw new Error(
             'Server did not return JSON. ' +
-            'Redeploy your Web App (Anyone, even anonymous) and use the /exec URL.'
+            'Redeploy your Apps Script as Web App (Anyone, even anonymous).'
           );
         }
         return res.json();
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (data.error) {
           resultEl.textContent = `Error: ${data.error}`;
         } else {
-          resultEl.textContent = 'Unexpected response format.';
+          resultEl.textContent = 'Unexpected response.';
         }
       })
       .catch(err => {
