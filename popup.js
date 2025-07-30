@@ -15,14 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch(`${API_URL}?productName=${encodeURIComponent(name)}`)
       .then(res => {
-        if (!res.ok) throw new Error(`Status ${res.status}`);
+        if (!res.ok) throw new Error(`Network status ${res.status}`);
         return res.json();
       })
       .then(data => {
         if (data.found === true) {
-          result.innerHTML = `<i class="fa-solid fa-check"></i> Yes, “${name}” is verified.`;
+          result.innerHTML = `<i class="fa-solid fa-check"></i>
+                              Yes, “${name}” is verified.`;
         } else if (data.found === false) {
-          result.innerHTML = `<i class="fa-solid fa-xmark"></i> No, “${name}” is not verified.`;
+          result.innerHTML = `<i class="fa-solid fa-xmark"></i>
+                              No, “${name}” is not verified.`;
         } else if (data.error) {
           result.textContent = `Error: ${data.error}`;
         } else {
@@ -31,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(err => {
         console.error('Fetch error:', err);
-        result.textContent = 'Error reaching server. Please check console.';
+        result.textContent =
+          'Error reaching server. Please check console.';
       });
   });
 });
