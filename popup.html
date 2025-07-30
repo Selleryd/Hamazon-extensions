@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Verifier</title>
+  <!-- Font Awesome free (no download needed) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pb3yY7+hJsKf0p5j+iw1pCVC/WxJogo9uppy4v1CgP+xKd1YPGNQZ+SeLyw+Vha6vzZLYa7YBq80Ee1hInYkgw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Product Verifier</h1>
+    <h1><i class="fa-solid fa-shield-halved"></i> Product Verifier</h1>
     <input id="productName" type="text" placeholder="Enter product name" />
-    <button id="verifyBtn">Verify</button>
+    <button id="verifyBtn">
+      <i class="fa-solid fa-shield-check"></i>
+      Verify
+    </button>
     <div id="result" class="result"></div>
   </div>
   <script src="popup.js"></script>
