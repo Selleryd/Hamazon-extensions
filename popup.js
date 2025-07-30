@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const VERIFY_HTML   = '<i class="fa-solid fa-shield-check"></i><span>Verify</span>';
   const LOADING_HTML  = '<i class="fa-solid fa-spinner fa-spin"></i><span>Verifying...</span>';
-  const API_URL       = 'https://script.google.com/macros/s/AKfycbzv61PbeXP1yjhQJWDsasAuCphvbDuxZM3vJQG1V1MzHUlBxR0J7iwwxKebLfB9SMBT/exec';
+  const API_URL       = 'https://script.google.com/macros/s/AKfycbzdMwAlQPB26rdyWyoXT7Pik3HfvV0jCUp7DczUnsljz8TkvoMqexA3xqNlMK9wLyrA/exec';
 
   btn.addEventListener('click', () => {
     const name = nameEl.value.trim();
