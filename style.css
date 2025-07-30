@@ -7,7 +7,6 @@ body {
   justify-content: center;
   background: linear-gradient(135deg, #1f1c2c, #928dab);
   font-family: 'Segoe UI', sans-serif;
-  /* no forced height */
 }
 
 /* glass‑morphic card */
@@ -16,14 +15,14 @@ body {
   border-radius: 16px;
   padding: 24px;
   width: 360px;
-  max-height: 80vh;       /* never exceed 80% of popup height */
-  overflow-y: auto;       /* scroll if content is too tall */
+  max-height: 80vh;
+  overflow-y: auto;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   color: #fff;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 /* header with animated icon */
@@ -39,6 +38,14 @@ body {
 .header .fa-shield-halved {
   color: #1abc9c;
   animation: pulse 2s infinite;
+}
+
+/* subheader instruction */
+.subheader {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 4px;
 }
 
 /* input styling */
@@ -77,7 +84,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:disabled {
@@ -99,6 +106,12 @@ button:active:not(:disabled) {
   text-align: center;
   min-height: 1.2em;
   font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.result .fa-check,
+.result .fa-xmark {
+  margin-right: 6px;
 }
 
 /* pulse animation */
