@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result');
   btn.addEventListener('click', () => {
     const name = document.getElementById('productName').value.trim();
-    result.textContent = '';
+    result.innerHTML = '';
     if (!name) {
       result.textContent = 'Please enter a product name.';
       return;
@@ -17,9 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(data => {
         if (data.found) {
-          result.textContent = `✅ Yes, "${name}" is verified.`;
+          result.innerHTML = `<i class="fa-solid fa-check"></i>
+                              Yes, "${name}" is verified.`;
         } else {
-          result.textContent = `❌ No, "${name}" is not yet verified.`;
+          result.innerHTML = `<i class="fa-solid fa-xmark"></i>
+                              No, "${name}" is not yet verified.`;
         }
       })
       .catch(err => {
