@@ -1,4 +1,4 @@
-// popup.js
+// popup.js  (make sure this is the very first visible line)
 document.addEventListener('DOMContentLoaded', () => {
   const btn      = document.getElementById('verifyBtn');
   const resultEl = document.getElementById('result');
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (upc)  params.push(`upc=${encodeURIComponent(upc)}`);
     const url = `${API_URL}?${params.join('&')}`;
 
-    btn.disabled = true;
-    btn.innerHTML = LOADING_HTML;
+    btn.disabled   = true;
+    btn.innerHTML  = LOADING_HTML;
 
     fetch(url)
       .then(res => {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEl.textContent = err.message;
       })
       .finally(() => {
-        btn.disabled = false;
+        btn.disabled  = false;
         btn.innerHTML = VERIFY_HTML;
       });
   });
