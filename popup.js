@@ -1,44 +1,54 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const btn         = document.getElementById('verifyBtn');
-  const resultEl    = document.getElementById('result');
-  const inputEl     = document.getElementById('productName');
-  const VERIFY_HTML = '<i class="fa-solid fa-shield-check"></i><span>Verify</span>';
-  const LOADING_HTML= '<i class="fa-solid fa-spinner fa-spin"></i><span>Verifying...</span>';
-  const API_URL     = 'https://script.google.com/macros/s/AKfycbzv61PbeXP1yjhQJWDsasAuCphvbDuxZM3vJQG1V1MzHUlBxR0J7iwwxKebLfB9SMBT/exec';
+\document.addEventListener('DOMContentLoaded', () => {
+  const btn      = document.getElementById('verifyBtn');
+  const resultEl = document.getElementById('result');
+  const nameEl   = document.getElementById('productName');
+  const upcEl    = document.getElementById('productUpc');
+
+  const VERIFY_HTML   = '<i class="fa-solid fa-shield-check"></i><span>Verify</span>';
+  const LOADING_HTML  = '<i class="fa-solid fa-spinner fa-spin"></i><span>Verifying...</span>';
+  const API_URL       = 'https://script.google.com/macros/s/AKfycbzv61PbeXP1yjhQJWDsasAuCphvbDuxZM3vJQG1V1MzHUlBxR0J7iwwxKebLfB9SMBT/exec';
 
   btn.addEventListener('click', () => {
-    const name = inputEl.value.trim();
+    const name = nameEl.value.trim();
+    const upc  = upcEl.value.trim();
     resultEl.textContent = '';
-    if (!name) {
-      resultEl.textContent = 'Please enter a product name.';
+
+    if (!name && !upc) {
+      resultEl.textContent = 'Please enter a product name or UPC.';
       return;
     }
 
-    // show loading
+    // build query string with whichever params are present
+    const params = [];
+    if (name) params.push(`productName=${encodeURIComponent(name)}`);
+    if (upc)  params.push(`upc=${encodeURIComponent(upc)}`);
+    const url = `${API_URL}?${params.join('&')}`;
+
+    // loading state
     btn.disabled = true;
     btn.innerHTML = LOADING_HTML;
 
-    fetch(`${API_URL}?productName=${encodeURIComponent(name)}`)
+    fetch(url)
       .then(res => {
-        if (!res.ok) throw new Error(`Network error (${res.status})`);
+        if (!res.ok) throw new Error(`Network ${res.status}`);
         const ct = res.headers.get('content-type') || '';
         if (!ct.includes('application/json')) {
           throw new Error(
-            'Server didn’t return JSON. ' +
-            'Redeploy as a Web App (Anyone, even anonymous).'
+            'Server did not return JSON. ' +
+            'Redeploy your Web App (Anyone, even anonymous) and use the /exec URL.'
           );
         }
         return res.json();
       })
       .then(data => {
         if (data.found === true) {
-          resultEl.innerHTML = `<i class="fa-solid fa-check"></i> Yes, “${name}” is verified.`;
+          resultEl.innerHTML = `<i class="fa-solid fa-check"></i> Match found!`;
         } else if (data.found === false) {
-          resultEl.innerHTML = `<i class="fa-solid fa-xmark"></i> No, “${name}” isn’t verified.`;
+          resultEl.innerHTML = `<i class="fa-solid fa-xmark"></i> No match.`;
         } else if (data.error) {
           resultEl.textContent = `Error: ${data.error}`;
         } else {
-          resultEl.textContent = 'Unexpected response.';
+          resultEl.textContent = 'Unexpected response format.';
         }
       })
       .catch(err => {
