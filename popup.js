@@ -1,4 +1,3 @@
-// popup.js
 document.addEventListener('DOMContentLoaded', () => {
   const btn      = document.getElementById('verifyBtn');
   const resultEl = document.getElementById('result');
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const VERIFY_HTML   = '<i class="fa-solid fa-shield-check"></i><span>Verify</span>';
   const LOADING_HTML  = '<i class="fa-solid fa-spinner fa-spin"></i><span>Verifying...</span>';
-  const API_URL       = 'https://script.google.com/macros/s/AKfycbzdMwAlQPB26rdyWyoXT7Pik3HfvV0jCUp7DczUnsljz8TkvoMqexA3xqNlMK9wLyrA/exec';
+  const API_URL       = 'https://script.google.com/macros/s/AKfycbxNYKjBjTeCpiAzpRMWlKKLVGNhbURuVZHRjc7rpofcqUr9oapgJwuPxK5GcuxxoY02/exec';
 
   btn.addEventListener('click', () => {
     const name = nameEl.value.trim();
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ct = res.headers.get('content-type') || '';
         if (!ct.includes('application/json')) {
           throw new Error(
-            'Server did not return JSON. ' +
+            'Server did not return JSON.\n' +
             'Redeploy your Apps Script as Web App (Anyone, even anonymous).'
           );
         }
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.found === true) {
           resultEl.innerHTML = `<i class="fa-solid fa-check"></i> Hamazon Certified!`;
         } else if (data.found === false) {
-          resultEl.innerHTML = `<i class="fa-solid fa-xmark"></i> No match.`;
+          resultEl.innerHTML = `<i class="fa-solid fa-xmark"></i> Not Hamazon certified!`;
         } else if (data.error) {
           resultEl.textContent = `Error: ${data.error}`;
         } else {
