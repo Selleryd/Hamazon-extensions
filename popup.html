@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamazon Verifier</title>
-
-  <!-- Google Material Icons & Inter font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-
-  <!-- Local stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Script loads *after* HTML thanks to defer -->
-  <script src="popup.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifier</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1 class="title"><span class="material-icons">verified</span> Hamazon Verifier</h1>
-
-    <input id="productInput" type="text" placeholder="Enter product name…" />
-
-    <button id="verifyBtn">
-      <span class="material-icons">search</span> Verify
-    </button>
-
-    <div id="result"></div>
+    <h1>Product Verifier</h1>
+    <input id="productName" type="text" placeholder="Enter product name" />
+    <button id="verifyBtn">Verify</button>
+    <div id="result" class="result"></div>
   </div>
+  <script src="popup.js"></script>
 </body>
 </html>
