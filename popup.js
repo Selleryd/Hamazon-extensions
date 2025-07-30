@@ -1,4 +1,4 @@
-// popup.js  (make sure this is the very first visible line)
+// popup.js
 document.addEventListener('DOMContentLoaded', () => {
   const btn      = document.getElementById('verifyBtn');
   const resultEl = document.getElementById('result');
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (upc)  params.push(`upc=${encodeURIComponent(upc)}`);
     const url = `${API_URL}?${params.join('&')}`;
 
-    btn.disabled   = true;
-    btn.innerHTML  = LOADING_HTML;
+    btn.disabled  = true;
+    btn.innerHTML = LOADING_HTML;
 
     fetch(url)
       .then(res => {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(data => {
         if (data.found === true) {
-          resultEl.innerHTML = `<i class="fa-solid fa-check"></i> Match found!`;
+          resultEl.innerHTML = `<i class="fa-solid fa-check"></i> Hamazon Certified!`;
         } else if (data.found === false) {
           resultEl.innerHTML = `<i class="fa-solid fa-xmark"></i> No match.`;
         } else if (data.error) {
