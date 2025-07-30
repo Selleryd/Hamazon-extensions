@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const API_URL =
-      'https://script.google.com/macros/s/AKfycbz6t4eFfjPR517PXYCkq0cE_XXxA0f8MNsB_44a80MDfuciiqvB3QF_psvu6oKONdFc/exec';
+      'https://script.google.com/macros/s/AKfycbzv61PbeXP1yjhQJWDsasAuCphvbDuxZM3vJQG1V1MzHUlBxR0J7iwwxKebLfB9SMBT/exec';
 
     fetch(`${API_URL}?productName=${encodeURIComponent(name)}`)
       .then(res => {
